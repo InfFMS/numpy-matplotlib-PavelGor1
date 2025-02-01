@@ -7,8 +7,22 @@
 # Визуализируйте результаты в виде гистограммы.
 import matplotlib.pyplot as plt
 import numpy as np
+def max_i(maxi):
+    s = 1
+    max_1 = 1
+    for i in range(1, len(maxi)):
+        if maxi[i] == maxi[i - 1]:
+            s += 1
+        else:
+            max_1 = max(max_1, s)
+            s = 1
+    max_1 = max(max_1, s)
+    return max_1
 s = 1000
 random_array = np.random.randint(1, 7, s)
+array = random_array[::]
+result = max_i(array)
+print("Максимальное количество подряд идущих значений кубика:", result)
 a=0
 b=0
 c=0
@@ -39,7 +53,7 @@ values = [ver_a, ver_b, ver_c, ver_d, ver_e, ver_f]
 plt.xlabel("Значения кубика")
 plt.ylabel("Вероятность выпадения")
 plt.bar(categories, values, color='purple')
-plt.subplots_adjust(bottom=0.35)
+plt.subplots_adjust(bottom=0.1)
 plt.title("Столбчатая диаграмма вероятности выпадения числа от 1 до 6")
 plt.show()
 
